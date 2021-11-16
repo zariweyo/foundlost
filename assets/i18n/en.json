@@ -1,0 +1,24 @@
+{
+    "null": "Null",
+    "enter_search": "Enter search",
+    "Error_storage_path_is_empty": "Storage path is empty",
+    "lostObject": "Lost Object",
+    "next": "Next",
+    "lostobject_name": "Name of the losser object",
+    "name": "Name",
+    "lostobject_description": "Description of the object or animal that you lost. You need to describe with all of details that you can, focused in things that make this object or animal unique.",
+    "description": "Description (avoid to put date or time or place, because you are going to do that in next steps)",
+    "lostobject_type": "Select if you lost this object or if you searched it",
+    "LostObjectType":{
+        "none": "None",
+        "searching": "I've lost this",
+        "finded": "I've found this"
+    },
+    "select_image_source": "Select image source",
+    "search_place": "Write a place to search",
+    "lostobject_address": "Where has you founded this object or animal?",
+    "search_places_by_my_location": "Press here to get places near you location using your current position.",
+    "no_current_location": "This app can't get your current location. You need to search it manualy.",
+    "delete_lostobject": "Delete this item",
+    "edit_lostobject": "Edit this item"
+}

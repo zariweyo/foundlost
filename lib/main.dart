@@ -1,28 +1,40 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'dart:developer';
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_i18n/flutter_i18n.dart';
+import 'package:flutter_i18n/flutter_i18n_delegate.dart';
+import 'package:flutter_i18n/loaders/file_translation_loader.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:foundlost/lostObjects/lostObjectDetail/views/index.dart';
+import 'package:foundlost/start_app.dart';
 
-import 'app.dart';
-import 'counter_observer.dart';
+import 'common/index.dart';
+import 'global_bloc_observer.dart';
+import 'lostObjects/index.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  Bloc.observer = CounterObserver();
-  runApp(const CounterApp());
+  Bloc.observer = GlobalBlocObserver();
+  runApp(const App());
 }
-/* 
+
+
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
-  // Create the initialization Future outside of `build`:
   @override
   _AppState createState() => _AppState();
 }
 
 class _AppState extends State<App> {
-  /// The future is part of the state of our widget. We should not call `initializeApp`
-  /// directly inside [build].
-  final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+  late Future<FirebaseApp> _initialization;
+
+  @override
+  void initState() {
+    _initialization = StartApp.registers(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +44,7 @@ class _AppState extends State<App> {
       builder: (context, snapshot) {
         // Check for errors
         if (snapshot.hasError) {
-          return const MyApp();
+          return const CircularProgressIndicator();
         }
 
         // Once complete, show your application
@@ -61,59 +73,33 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    FirebaseFirestore.instance.collection("config").get().then((qSnap){
-      print(qSnap.docs.map((e) => e.id).join(", "));
-    });
-
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
+      initialRoute: '/',
+      routes: {
+        '/': (context) {
+          StartApp.initContext(context);
+          return const LostObjectsListPage();
+        },
+        '/newLostObject': (context) => const LostObjectsFormPage(),
+        '/viewLostObject': (context) => const LostObjectsDetailPage(),
+      },
+      localizationsDelegates: [
+        FlutterI18nDelegate(
+          translationLoader: FileTranslationLoader(
+            fallbackFile: 'es',
+            basePath: 'assets/i18n'
+          ),
+          missingTranslationHandler: (key, locale) {
+            log("--- Missing Key: $key, languageCode: ${locale!.languageCode}");
+          },
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), 
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('en', ''),
+        Locale('es', ''),
+      ],
+      builder: FlutterI18n.rootAppBuilder()
     );
   }
 }
- */

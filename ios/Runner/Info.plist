@@ -41,5 +41,13 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>It's neccesary to upload images from your lost objects</string>
+	<key>NSCameraUsageDescription</key>
+	<string>It's neccesary to upload images from your lost objects</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>It's neccesary to upload images from your lost objects</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app needs access to location when open.</string>
 </dict>
 </plist>

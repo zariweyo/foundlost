@@ -1,0 +1,26 @@
+{
+    "null": "Null",
+    "enter_search": "Buscar",
+    "Error_storage_path_is_empty": "Error al almacenar. Ruta vacia.",
+    "lostObject": "DENUN",
+    "next": "Siguiente",
+    "lostobject_name": "Título del objeto",
+    "name": "Título",
+    "lostobject_description": "Descripción de la incidencia encontrada. Debes explicarla con detalle para que se entienda correctamente la situación",
+    "description": "Description (avoid to put date or time or place, because you are going to do that in next steps)",
+    "lostobject_type": "Select el nivel de affeción",
+    "LostObjectType":{
+        "none": "None",
+        "high": "Alto",
+        "medium": "Medio",
+        "low": "Bajo"
+    },
+    "lostobject_get_images": "Envía tus imágenes de este incidente",
+    "select_image_source": "Selecciona origen de la imagen",
+    "search_place": "Escribe el lugar para buscar",
+    "lostobject_address": "¿Dónde ocurre esta incidencia?",
+    "search_places_by_my_location": "Buscar dirección usando GPS",
+    "no_current_location": "No se puede obtener la dirección. Debes escribirla para buscarla.",
+    "delete_lostobject": "Borrar",
+    "edit_lostobject": "Editar"
+}

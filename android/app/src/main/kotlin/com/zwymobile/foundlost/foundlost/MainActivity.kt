@@ -1,4 +1,4 @@
-package com.zwymobile.foundlost.foundlost
+package com.zwymobile.foundlost
 
 import io.flutter.embedding.android.FlutterActivity
 
